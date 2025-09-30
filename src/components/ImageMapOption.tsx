@@ -8,7 +8,7 @@ const ImageMapOption = () => {
   return (
     <>
       <div 
-        className="w-full h-full cursor-pointer group relative overflow-hidden"
+        className="cursor-pointer group relative overflow-hidden"
         onClick={() => setIsOpen(true)}
       >
         <img 
