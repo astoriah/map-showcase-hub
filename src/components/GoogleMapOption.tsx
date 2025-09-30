@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 const GoogleMapOption = () => {
-  const [apiKey, setApiKey] = useState("");
+  const [apiKey, setApiKey] = useState("AIzaSyB26LgiRz6G7mdmcbKfCVoNbfeUECRJcas");
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const loadMap = () => {
