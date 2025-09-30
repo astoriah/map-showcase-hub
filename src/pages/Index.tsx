@@ -1,5 +1,6 @@
 import MapOption from "@/components/MapOption";
 import ImageMapOption from "@/components/ImageMapOption";
+import GoogleMapOption from "@/components/GoogleMapOption";
 import IframeMapOption from "@/components/IframeMapOption";
 
 const Index = () => {
@@ -20,8 +21,11 @@ const Index = () => {
             <ImageMapOption />
           </MapOption>
 
+          <MapOption title="Option 2: Google Maps API">
+            <GoogleMapOption />
+          </MapOption>
 
-          <MapOption title="Option 2: Embedded Map">
+          <MapOption title="Option 3: Embedded Map">
             <IframeMapOption />
           </MapOption>
         </div>
