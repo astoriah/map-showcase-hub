@@ -21,11 +21,8 @@ const Index = () => {
             <ImageMapOption />
           </MapOption>
 
-          <MapOption title="Option 2: Google Maps API">
-            <GoogleMapOption />
-          </MapOption>
 
-          <MapOption title="Option 3: Embedded Map">
+          <MapOption title="Option 2: Embedded Map">
             <IframeMapOption />
           </MapOption>
         </div>
