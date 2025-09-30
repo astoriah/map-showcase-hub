@@ -27,9 +27,9 @@
                 </p>
             </header>
 
-            <div class="space-y-12 max-w-7xl mx-auto">
-                <!-- Option 1: Image Map -->
-                <div class="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+            <div class="space-y-8 max-w-7xl mx-auto">
+                <!-- Row 1: Image Map Option -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
                         <div class="aspect-[4/3] bg-muted">
                             <div class="w-full h-full cursor-pointer group relative overflow-hidden" id="imageMapOption">
@@ -53,15 +53,13 @@
                     </div>
                 </div>
 
-                <!-- Option 2: Google Maps API -->
-                <div class="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+                <!-- Row 2: Google Maps API Option -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
-                        <div class="aspect-[4/3] bg-muted">
-                            <div class="w-full h-full">
-                                <div id="googleMap" class="w-full h-full min-h-[400px]"></div>
-                                <div id="mapLoading" class="absolute inset-0 flex items-center justify-center bg-muted">
-                                    <p class="text-sm text-muted-foreground">Loading map...</p>
-                                </div>
+                        <div class="aspect-[4/3] bg-muted relative">
+                            <div id="googleMap" class="w-full h-full"></div>
+                            <div id="mapLoading" class="absolute inset-0 flex items-center justify-center bg-muted">
+                                <p class="text-sm text-muted-foreground">Loading Google Maps...</p>
                             </div>
                         </div>
                     </div>
@@ -72,8 +70,8 @@
                     </div>
                 </div>
 
-                <!-- Option 3: Embedded Map -->
-                <div class="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+                <!-- Row 3: Embedded Map Option -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
                         <div class="aspect-[4/3] bg-muted">
                             <iframe 
