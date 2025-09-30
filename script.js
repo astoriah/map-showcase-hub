@@ -67,9 +67,9 @@ function initMap() {
         });
 
         // Add marker for University of Washington
-        new google.maps.Marker({
-            position: uwCenter,
+        new google.maps.marker.AdvancedMarkerElement({
             map: map,
+            position: uwCenter,
             title: "University of Washington",
         });
 
