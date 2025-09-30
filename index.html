@@ -1,24 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map Interface Comparison | Choose Your Mapping Solution</title>
-    <meta name="description" content="Compare three different map interface options: static image maps, Google Maps API integration, and embedded maps. Find the best mapping solution for your project." />
-    <meta name="author" content="Lovable" />
+    <meta name="description" content="Compare three different map interface options: static image maps, Google Maps API integration, and embedded maps. Find the best mapping solution for your project.">
+    <meta name="author" content="Lovable">
+    
+    <meta property="og:title" content="Map Interface Comparison">
+    <meta property="og:description" content="Compare different map integration methods for your project">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="min-h-screen bg-background">
+        <div class="container mx-auto px-4 py-12">
+            <header class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                    Map Interface Options
+                </h1>
+                <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+                    Compare different map integration methods for your project
+                </p>
+            </header>
 
-    <meta property="og:title" content="264363dc-163f-4fed-a1ff-d28b9b86d678" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+            <div class="space-y-12 max-w-7xl mx-auto">
+                <!-- Option 1: Image Map -->
+                <div class="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+                    <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
+                        <div class="aspect-[4/3] bg-muted">
+                            <div class="w-full h-full cursor-pointer group relative overflow-hidden" id="imageMapOption">
+                                <img 
+                                    src="src/assets/test_image.jpg" 
+                                    alt="Map view" 
+                                    class="w-full h-full object-cover transition-smooth group-hover:scale-105"
+                                />
+                                <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-smooth flex items-center justify-center">
+                                    <div class="opacity-0 group-hover:opacity-100 transition-smooth bg-background/90 px-4 py-2 rounded-lg">
+                                        <span class="text-sm font-medium">Click to enlarge</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start">
+                        <h2 class="text-2xl md:text-3xl font-semibold text-foreground">
+                            Option 1: Image Map
+                        </h2>
+                    </div>
+                </div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+                <!-- Option 2: Google Maps API -->
+                <div class="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+                    <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
+                        <div class="aspect-[4/3] bg-muted">
+                            <div class="w-full h-full">
+                                <div id="googleMap" class="w-full h-full min-h-[400px]"></div>
+                                <div id="mapLoading" class="absolute inset-0 flex items-center justify-center bg-muted">
+                                    <p class="text-sm text-muted-foreground">Loading map...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start">
+                        <h2 class="text-2xl md:text-3xl font-semibold text-foreground">
+                            Option 2: Google Maps API
+                        </h2>
+                    </div>
+                </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+                <!-- Option 3: Embedded Map -->
+                <div class="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+                    <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
+                        <div class="aspect-[4/3] bg-muted">
+                            <iframe 
+                                src="https://www.google.com/maps/d/u/0/embed?mid=1pwDgEjVgBxybEP34OjHv9x0VRGefprE&ehbc=2E312F" 
+                                width="100%" 
+                                height="100%" 
+                                class="border-0"
+                                title="Embedded Google Map"
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center md:justify-start">
+                        <h2 class="text-2xl md:text-3xl font-semibold text-foreground">
+                            Option 3: Embedded Map
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="Map view enlarged">
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB26LgiRz6G7mdmcbKfCVoNbfeUECRJcas&libraries=geometry&callback=initMap"></script>
+</body>
 </html>
