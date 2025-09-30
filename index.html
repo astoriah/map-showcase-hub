@@ -57,10 +57,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div class="card overflow-hidden shadow-card border-border transition-smooth hover:shadow-lg">
                         <div class="aspect-[4/3] bg-muted relative">
-                            <div id="googleMap" class="w-full h-full"></div>
-                            <div id="mapLoading" class="absolute inset-0 flex items-center justify-center bg-muted">
-                                <p class="text-sm text-muted-foreground">Loading Google Maps...</p>
-                            </div>
+                            <gmp-map center="47.6553,-122.3035" zoom="12" map-id="DEMO_MAP_ID" style="height: 100%; width: 100%;">
+                                <gmp-advanced-marker position="47.6553,-122.3035" title="University of Washington"></gmp-advanced-marker>
+                            </gmp-map>
                         </div>
                     </div>
                     <div class="flex items-center justify-center md:justify-start">
@@ -106,6 +105,6 @@
     <div id="toastContainer" class="toast-container"></div>
 
     <script src="script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB26LgiRz6G7mdmcbKfCVoNbfeUECRJcas&libraries=marker&loading=async&callback=initMap"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB26LgiRz6G7mdmcbKfCVoNbfeUECRJcas&callback=console.debug&libraries=maps,marker&v=beta"></script>
 </body>
 </html>
