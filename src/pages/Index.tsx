@@ -15,7 +15,7 @@ const Index = () => {
           </p>
         </header>
 
-        <div className="space-y-12 max-w-7xl mx-auto">
+        <div className="">
           <MapOption title="Option 1: Image Map">
             <ImageMapOption />
           </MapOption>
