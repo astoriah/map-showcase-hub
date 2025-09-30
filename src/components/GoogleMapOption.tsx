@@ -1,77 +1,84 @@
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 const GoogleMapOption = () => {
-  const [apiKey, setApiKey] = useState("AIzaSyB26LgiRz6G7mdmcbKfCVoNbfeUECRJcas");
+  const mapRef = useRef<HTMLDivElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const apiKey = "AIzaSyB26LgiRz6G7mdmcbKfCVoNbfeUECRJcas";
 
-  const loadMap = () => {
-    if (!apiKey.trim()) {
-      toast.error("Please enter a Google Maps API key");
-      return;
-    }
-    setMapLoaded(true);
-    toast.success("Map loaded successfully");
-  };
+  useEffect(() => {
+    const loadGoogleMaps = () => {
+      if (window.google && window.google.maps) {
+        initializeMap();
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=geometry`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        initializeMap();
+      };
+      script.onerror = () => {
+        toast.error("Failed to load Google Maps");
+      };
+      document.head.appendChild(script);
+    };
+
+    const initializeMap = () => {
+      if (!mapRef.current) return;
+
+      const uwCenter = { lat: 47.6553, lng: -122.3035 };
+
+      const map = new window.google.maps.Map(mapRef.current, {
+        center: uwCenter,
+        zoom: 12,
+        mapTypeControl: true,
+        streetViewControl: true,
+        fullscreenControl: true,
+      });
+
+      new window.google.maps.Marker({
+        position: uwCenter,
+        map: map,
+        title: "University of Washington",
+      });
+
+      new window.google.maps.Circle({
+        strokeColor: "#4F46E5",
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: "#4F46E5",
+        fillOpacity: 0.2,
+        map: map,
+        center: uwCenter,
+        radius: 4828.03,
+      });
+
+      setMapLoaded(true);
+      toast.success("Map loaded successfully");
+    };
+
+    loadGoogleMaps();
+  }, [apiKey]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-muted p-6">
-      {!mapLoaded ? (
-        <div className="space-y-4 max-w-md w-full">
-          <div className="text-center space-y-2">
-            <h3 className="text-lg font-semibold">Google Maps API Integration</h3>
-            <p className="text-sm text-muted-foreground">
-              Enter your Google Maps API key to view the interactive map
-            </p>
-          </div>
-          <div className="space-y-2">
-            <Input
-              type="password"
-              placeholder="Enter Google Maps API Key"
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              className="w-full"
-            />
-            <Button 
-              onClick={loadMap}
-              className="w-full"
-            >
-              Load Map
-            </Button>
-          </div>
-          <div className="text-xs text-muted-foreground text-center">
-            Get your API key from{" "}
-            <a 
-              href="https://console.cloud.google.com/google/maps-apis" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              Google Cloud Console
-            </a>
-          </div>
-        </div>
-      ) : (
-        <div className="w-full h-full bg-background/50 flex items-center justify-center rounded-lg">
-          <div className="text-center space-y-2">
-            <div className="text-primary text-4xl">📍</div>
-            <p className="text-sm text-muted-foreground">
-              Google Maps would load here with API key: {apiKey.slice(0, 8)}...
-            </p>
-            <Button 
-              variant="outline" 
-              size="sm"
-              onClick={() => setMapLoaded(false)}
-            >
-              Reset
-            </Button>
-          </div>
+    <div className="w-full h-full">
+      <div ref={mapRef} className="w-full h-full min-h-[400px]" />
+      {!mapLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-muted">
+          <p className="text-sm text-muted-foreground">Loading map...</p>
         </div>
       )}
     </div>
   );
 };
+
+declare global {
+  interface Window {
+    google: any;
+  }
+}
 
 export default GoogleMapOption;
