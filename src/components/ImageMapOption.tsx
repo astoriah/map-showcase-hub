@@ -8,13 +8,13 @@ const ImageMapOption = () => {
   return (
     <>
       <div 
-        className="cursor-pointer group relative overflow-hidden"
+        className="w-[100px] cursor-pointer group relative overflow-hidden"
         onClick={() => setIsOpen(true)}
       >
         <img 
           src={testImage} 
           alt="Map view" 
-          className="w-[100px] h-auto object-cover transition-[var(--transition-smooth)]"
+          className=""
         />
         <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-[var(--transition-smooth)] flex items-center justify-center">
           <div className="opacity-0 group-hover:opacity-100 transition-[var(--transition-smooth)] bg-background/90 px-4 py-2 rounded-lg">
