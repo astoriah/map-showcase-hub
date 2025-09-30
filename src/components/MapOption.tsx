@@ -8,7 +8,7 @@ interface MapOptionProps {
 
 const MapOption = ({ title, children }: MapOptionProps) => {
   return (
-    <div className="grid md:grid-cols-[2fr,1fr] gap-6 items-center">
+    <div className="grid md:grid-cols-2 gap-6 items-center">
       <Card className="overflow-hidden shadow-[var(--shadow-card)] border-border transition-[var(--transition-smooth)] hover:shadow-lg">
         <div className="aspect-[4/3] bg-muted">
           {children}

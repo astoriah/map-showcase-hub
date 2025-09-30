@@ -1,6 +1,5 @@
 import MapOption from "@/components/MapOption";
 import ImageMapOption from "@/components/ImageMapOption";
-import GoogleMapOption from "@/components/GoogleMapOption";
 import IframeMapOption from "@/components/IframeMapOption";
 
 const Index = () => {

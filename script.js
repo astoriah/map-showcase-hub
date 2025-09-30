@@ -47,39 +47,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-// Google Maps integration using dynamic library loading
-let map;
-async function initMap() {
-    const position = { lat: 47.6553, lng: -122.3035 }; // University of Washington
-    
-    try {
-        // Request needed libraries
-        const { Map } = await google.maps.importLibrary("maps");
-        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-        
-        // Create the map
-        map = new Map(document.getElementById("googleMap"), {
-            zoom: 12,
-            center: position,
-            mapId: "DEMO_MAP_ID",
-        });
-        
-        // Add marker
-        const marker = new AdvancedMarkerElement({
-            map: map,
-            position: position,
-            title: "University of Washington",
-        });
-    } catch (error) {
-        console.error('Error initializing map:', error);
-        showToast("Failed to load Google Maps", "error");
-    }
-}
-
-// Initialize map when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-} else {
-    initMap();
-}
